@@ -1,4 +1,4 @@
-package com.practice.solid;
+package com.practice.solid.models;
 
 // Single Responsibility Principle
 public class Bank {

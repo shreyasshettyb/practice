@@ -1,9 +1,9 @@
-package com.practice.solid;
+package com.practice.solid.service;
 
 
-public class BankService implements BankInterface {
-    BankAccount bankAccount = new BankAccount(new Bank("Example Bank", "MYB001244"), 12440500001L, "Shreyas", 12000.0);
+import com.practice.solid.remotes.BankAccountInterface;
 
+public class BankAccountService extends BankService implements BankAccountInterface {
 
     @Override
     public void deposit(Double amount) {
@@ -16,4 +16,5 @@ public class BankService implements BankInterface {
         bankAccount.setBalance(bankAccount.getBalance() - amount);
         System.out.println(bankAccount.getBalance());
     }
+
 }

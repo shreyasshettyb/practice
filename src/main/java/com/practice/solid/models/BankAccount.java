@@ -1,15 +1,14 @@
-package com.practice.solid;
+package com.practice.solid.models;
 
 //Single Responsibility Principle
 //Open Close Principle
-public class BankAccount {
-    private Bank bank;
+public class BankAccount extends Bank {
     private Long accountNumber;
     private String name;
     private Double balance;
 
-    public BankAccount(Bank bank, Long accountNumber, String name, Double balance) {
-        this.bank = bank;
+    public BankAccount(String bankName, String bankIFSC, Long accountNumber, String name, Double balance) {
+        super(bankName, bankIFSC);
         this.accountNumber = accountNumber;
         this.name = name;
         this.balance = balance;
@@ -39,18 +38,10 @@ public class BankAccount {
         this.accountNumber = accountNumber;
     }
 
-    public Bank getBank() {
-        return bank;
-    }
-
-    public void setBank(Bank bank) {
-        this.bank = bank;
-    }
-
     @Override
     public String toString() {
         return "BankAccount{" +
-                "bank=" + bank +
+                "bank=" + super.getBankName() +
                 ", accountNumber=" + accountNumber +
                 ", name='" + name + '\'' +
                 '}';
