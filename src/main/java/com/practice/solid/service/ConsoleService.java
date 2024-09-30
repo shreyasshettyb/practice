@@ -4,13 +4,16 @@ import com.practice.solid.remotes.ConsoleInterface;
 import com.practice.solid.remotes.SavingAccountInterface;
 
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class ConsoleService implements ConsoleInterface {
     static SavingAccountInterface bankAccountInterface = new SavingAccountService();
     static Scanner scanner = new Scanner(System.in);
+    static Logger logger = Logger.getLogger("ConsoleService");
+
     @Override
-    public void showMenu() {
-        System.out.println("Enter Option\n1.Deposit\n2.Withdraw\n3.View Bank Details\n4.Savings Interest\n5.Interest Type\n6.Quit");
+    public boolean showMenu() {
+        logger.info("Enter Option\n1.Deposit\n2.Withdraw\n3.View Bank Details\n4.Savings Interest\n5.Interest Type\n6.Quit");
         int opt = scanner.nextInt();
         switch (opt) {
             case 1 -> deposit();
@@ -18,37 +21,39 @@ public class ConsoleService implements ConsoleInterface {
             case 3 -> bankDetails();
             case 4 -> interestRate();
             case 5 -> interestType();
-            case 6 ->{
+            case 6 -> {
                 scanner.close();
-                System.exit(0);
+                return false;
             }
+            default -> logger.warning("Wrong Option!!.Please Try Again");
         }
+        return true;
     }
 
     public static void deposit(){
-        System.out.println("Enter Deposit Amount");
+        logger.info("Enter Deposit Amount");
         Double amt = scanner.nextDouble();
         bankAccountInterface.deposit(amt);
     }
 
     public static void withdraw(){
-        System.out.println("Enter Withdraw Amount");
+        logger.info("Enter Withdraw Amount");
         Double amt = scanner.nextDouble();
         bankAccountInterface.withdraw(amt);
     }
 
     public static void bankDetails(){
-        System.out.println("Bank Details Are:");
+        logger.info("Bank Details Are:");
         bankAccountInterface.getBankDetails();
     }
 
     public static void interestRate(){
-        System.out.println("Interest Rate is:");
+        logger.info("Interest Rate is:");
         bankAccountInterface.showInterest();
     }
 
     public static void interestType(){
-        System.out.println("Interest Type is:");
+        logger.info("Interest Type is:");
         bankAccountInterface.showInterestCal();
     }
 }

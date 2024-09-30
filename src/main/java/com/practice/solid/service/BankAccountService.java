@@ -8,13 +8,13 @@ public class BankAccountService extends BankService implements BankAccountInterf
     @Override
     public void deposit(Double amount) {
         bankAccount.setBalance(bankAccount.getBalance() + amount);
-        System.out.println(bankAccount.getBalance());
+        logger.info(bankAccount.getBalance().toString());
     }
 
     @Override
     public void withdraw(Double amount) {
         bankAccount.setBalance(bankAccount.getBalance() - amount);
-        System.out.println(bankAccount.getBalance());
+        logger.info(bankAccount.getBalance().toString());
     }
 
 }

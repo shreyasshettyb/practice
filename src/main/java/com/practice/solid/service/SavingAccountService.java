@@ -6,11 +6,11 @@ public class SavingAccountService extends BankAccountService implements SavingAc
 
     @Override
     public void showInterest() {
-        System.out.println("Interest Amount:"+bankAccount.getBalance()*((bankAccount.getRateOfInterest()+100)/100));
+        logger.info("Interest Amount:"+bankAccount.getBalance()*((bankAccount.getRateOfInterest()+100)/100));
     }
 
     @Override
     public void showInterestCal() {
-        System.out.println(bankAccount.getInterestCal());
+        logger.info(bankAccount.getInterestCal());
     }
 }

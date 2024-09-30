@@ -8,12 +8,11 @@ public class BankMain {
 
     public static void main(String[] args) {
         ConsoleInterface consoleInterface = new ConsoleService();
-        while(true){
-            consoleInterface.showMenu();
+        boolean loopCondtion=true;
+        while (loopCondtion) {
+            loopCondtion=consoleInterface.showMenu();
         }
     }
-
-
 
 
 }
