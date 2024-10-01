@@ -6,11 +6,18 @@ import com.practice.solid.remotes.SavingAccountInterface;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+/**
+ * {@link ConsoleService} is used to show the menu options and take input from user.
+ */
 public class ConsoleService implements ConsoleInterface {
     static SavingAccountInterface bankAccountInterface = new SavingAccountService();
     static Scanner scanner = new Scanner(System.in);
     static Logger logger = Logger.getLogger("ConsoleService");
 
+    /**
+        *Method displays the menu, takes input and routes it to respective service methods
+     * @return {@code true} if loop should continue and {@code false} if quit
+     */
     @Override
     public boolean showMenu() {
         logger.info("Enter Option\n1.Deposit\n2.Withdraw\n3.View Bank Details\n4.Savings Interest\n5.Interest Type\n6.Quit");
